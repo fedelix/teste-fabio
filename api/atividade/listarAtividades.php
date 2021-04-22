@@ -11,8 +11,6 @@ $db = $database->getConnection();
 $atividades = new Atividades($db);
 
 $atividades->projetoId = isset($_GET['id']) ? $_GET['id'] : die();
-$atividades->orderBy = isset($_GET['orderBy']) ? $_GET['orderBy'] : "ASC";
-
 $stmt = $atividades->listarAtividades();
 $num = $stmt->rowCount();
   

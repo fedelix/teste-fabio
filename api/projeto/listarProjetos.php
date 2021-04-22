@@ -10,8 +10,6 @@ $db = $database->getConnection();
   
 $projeto = new Projeto($db);
 
-$projeto->orderBy = isset($_GET['orderBy']) ? $_GET['orderBy'] : "ASC";
-
 $stmt = $projeto->listarProjetos();
 $num = $stmt->rowCount();
   

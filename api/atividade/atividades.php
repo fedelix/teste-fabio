@@ -24,11 +24,10 @@ class Atividades{
                 WHERE 
                     projetoId = :projetoId 
                 ORDER BY
-                    atividadeDataFim :orderBy";
+                    atividadeDataFim";
       
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":projetoId", $this->projetoId);
-        $stmt->bindParam(":orderBy", $this->orderBy);
         $stmt->execute();
       
         return $stmt;
@@ -98,21 +97,4 @@ class Atividades{
         return false;
     }
 
-    function apagarAtividade() {
-  
-        $query = "DELETE FROM
-                    ".$this->tabelaAtividades."
-                WHERE 
-                    atividadeId = :atividadeId";
-      
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":atividadeId", $this->atividadeId);
-        $stmt->execute();
-      
-        if ($stmt->execute()) {
-            return true;
-        }
-      
-        return false;
-    }
 }

@@ -25,10 +25,9 @@ class Projeto{
                 FROM
                     ".$this->tabelaProjetos."
                 ORDER BY
-                    projetoDataFim :orderBy";
+                    projetoDataFim";
       
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":orderBy", $this->orderBy);
         $stmt->execute();
       
         return $stmt;
@@ -95,21 +94,4 @@ class Projeto{
         return false;
     }
 
-    function apagarProjeto() {
-  
-        $query = "DELETE FROM
-                    ".$this->tabelaProjetos."
-                WHERE 
-                projetoId = :projetoId";
-      
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":projetoId", $this->projetoId);
-        $stmt->execute();
-      
-        if ($stmt->execute()) {
-            return true;
-        }
-      
-        return false;
-    }
 }

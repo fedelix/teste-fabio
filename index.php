@@ -12,7 +12,7 @@
     <div class="container">
         <div class="py-5 text-center">
             <h3>Projetos cadastrados</h3>
-            <button type="button" class="btn btn-primary">Cadastrar projeto</button><br><br>
+            <button type="button" id="cadastrarProjeto" class="btn btn-primary">Cadastrar projeto</button><br><br>
             <center>
             <table border="1" style="width:100%">
                 <thead>
@@ -53,6 +53,39 @@
                 </table>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="cadProjeto">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cadastrar projeto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="cadProj">
+                    <div class="form-group">
+                        <label for="nome">Nome do projeto*:</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Nome do projeto">
+                    </div>
+                    <div class="form-group">
+                        <label for="inicio">Data início*:</label>
+                        <input type="date" class="form-control" id="inicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="fim">Data final*:</label>
+                        <input type="date" class="form-control" id="fim">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cadastrar" class="btn btn-primary">Cadastrar</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
             </div>

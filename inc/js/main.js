@@ -31,5 +31,48 @@ $( document ).ready(function() {
         });
 
         $("#detalhesModal").modal('show');
-    })
+    });
+
+    $("body").on("click", "#cadastrarProjeto", function(e) {
+        $("#cadProjeto").modal('show');
+    });
+
+    $("body").on("click", "#cadastrar", function(e) {
+        let erro = false;
+        $(".error").removeClass("error");
+        if ($("#nome").val() == "") {
+            $("#nome").addClass("error");
+            erro = true;
+        }
+        if ($("#inicio").val() == "") {
+            $("#inicio").addClass("error");
+            erro = true;
+        }
+        if ($("#fim").val() == "") {
+            $("#fim").addClass("error");
+            erro = true;
+        }
+
+        if (erro) {
+            alert("Prencha os campos obrigatórios (*)");
+        } else {
+            var dados = {
+                projetoNome: $("#nome").val(),
+                projetoDataInicio: $("#inicio").val(),
+                projetoDataFim: $("#fim").val()
+            }
+
+            $.ajax({
+                url: "api/projeto/criarProjeto.php",
+                type: "POST",
+                data: {'dados': dados},
+                dataType: "JSON",
+                success: function (r) {
+                    alert(r.message);
+                    $("#cadProjeto").modal('hide');
+                    location.reload();
+                }
+            });
+        }
+    });
 });

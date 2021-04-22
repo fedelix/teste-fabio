@@ -1,4 +1,4 @@
-# Tecnologias usadas:
+Tecnologias usadas:
 #   PHP
 #   jQuery
 #

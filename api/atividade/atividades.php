@@ -38,11 +38,11 @@ class Atividades{
         $query = "INSERT INTO
                     ".$this->tabelaAtividades."
                 SET
-                projetoId = :projetoId,
-                atividadeNome = :atividadeNome,
-                atividadeDataInicio = :atividadeDataInicio,
-                atividadeDataFim = :atividadeDataFim,
-                atividadeFinalizada = 0";
+                    projetoId = :projetoId,
+                    atividadeNome = :atividadeNome,
+                    atividadeDataInicio = :atividadeDataInicio,
+                    atividadeDataFim = :atividadeDataFim,
+                    atividadeFinalizada = 0";
       
         $stmt = $this->conn->prepare($query);
 

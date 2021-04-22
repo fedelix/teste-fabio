@@ -13,19 +13,19 @@ $db = $database->getConnection();
   
 $atividade = new Projeto($db);
   
-$data = json_decode(file_get_contents("php://input"));
+$data = $_POST['dados'];
   
 if (
-    !empty($data->projetoId) &&
-    !empty($data->atividadeNome) &&
-    !empty($data->atividadeDataInicio) &&
-    !empty($data->atividadeDataFim)
+    !empty($data["projetoId"]) &&
+    !empty($data["nomeAtividade"]) &&
+    !empty($data["atividadeDataInicio"]) &&
+    !empty($data["atividadeDataFim"])
 ) {
   
-    $atividade->projetoId = $data->projetoId;
-    $atividade->atividadeNome = $data->atividadeNome;
-    $atividade->atividadeDataInicio = $data->atividadeDataInicio;
-    $atividade->atividadeDataFim = $data->atividadeDataFim;
+    $atividade->projetoId = $data["projetoId"];
+    $atividade->atividadeNome = $data["nomeAtividade"];
+    $atividade->atividadeDataInicio = $data["atividadeDataInicio"];
+    $atividade->atividadeDataFim = $data["atividadeDataFim"];
   
     if($atividade->criarAtividade()){
 

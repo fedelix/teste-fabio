@@ -17,7 +17,6 @@ $num = $stmt->rowCount();
 if ($num > 0) {
   
     $atividadesArray = array();
-    $atividadesArray["records"] = array();
   
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         extract($row);
@@ -31,7 +30,7 @@ if ($num > 0) {
             "atividadeFinalizada" => $atividadeFinalizada
         );
   
-        array_push($atividadesArray["records"], $atividadesItem);
+        array_push($atividadesArray, $atividadesItem);
     }
   
     http_response_code(200);

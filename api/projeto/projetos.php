@@ -3,12 +3,15 @@ class Projeto{
   
     private $conn;
     private $tabelaProjetos = "projetos";
+    private $tabelaAtividades = "atividades";
   
     public $projetoId;
     public $projetoNome;
     public $projetoDataInicio;
     public $projetoDataFim;
     public $projetoFinalizado;
+    public $atividadeTotal;
+    public $atividadeFinalizada;
   
     public function __construct($db){
         $this->conn = $db;
@@ -17,15 +20,23 @@ class Projeto{
     function listarProjetos() {
   
         $query = "SELECT
-                    projetoId,
-                    projetoNome,
-                    projetoDataInicio,
-                    projetoDataFim,
-                    projetoFinalizado
+                    p.projetoId,
+                    p.projetoNome,
+                    p.projetoDataInicio,
+                    p.projetoDataFim,
+                    p.projetoFinalizado,
+                    COUNT(a.atividadeFinalizada) as atividadeTotal,
+                    SUM(a.atividadeFinalizada) as atividadeFinalizada
                 FROM
-                    ".$this->tabelaProjetos."
+                    ".$this->tabelaProjetos." p
+                LEFT JOIN
+                    ".$this->tabelaAtividades." a
+				ON 
+					p.projetoId = a.projetoId
+                GROUP BY
+                    p.projetoId
                 ORDER BY
-                    projetoDataFim";
+                    p.projetoDataFim";
       
         $stmt = $this->conn->prepare($query);
         $stmt->execute();

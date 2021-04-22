@@ -16,20 +16,22 @@ $num = $stmt->rowCount();
 if ($num > 0) {
   
     $projetoArray = array();
-    $projetoArray["records"] = array();
   
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         extract($row);
+
+        $porcentagem = ($atividadeFinalizada == "") ? "0" : round(($atividadeFinalizada / $atividadeTotal) * 100, 2);
   
         $projetoItem = array(
             "projetoId" => $projetoId,
             "projetoNome" => $projetoNome,
             "projetoDataInicio" => $projetoDataInicio,
             "projetoDataFim" => $projetoDataFim,
-            "projetoFinalizado" => $projetoFinalizado
+            "projetoFinalizado" => $projetoFinalizado,
+            "porcentagem" => $porcentagem
         );
   
-        array_push($projetoArray["records"], $projetoItem);
+        array_push($projetoArray, $projetoItem);
     }
   
     http_response_code(200);

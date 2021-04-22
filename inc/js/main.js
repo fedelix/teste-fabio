@@ -3,7 +3,7 @@ $( document ).ready(function() {
 
         for(let i = 0; data.length > i; i++ ) {
             
-            let atrasado = moment(data[i].projetoDataFim).isAfter(moment().format("YYYY-MM-DD")) ? "Sim" : "Não";
+            let atrasado = moment(data[i].projetoDataFim).isBefore(moment().format("YYYY-MM-DD")) ? "Sim" : "Não";
 
             $("#projetos").append( "<tr><td>"+data[i].projetoNome+"</td>"
                 +"<td>"+moment(data[i].projetoDataInicio, "YYYY-MM-DD").format("DD/MM/YYYY")+"</td>"
